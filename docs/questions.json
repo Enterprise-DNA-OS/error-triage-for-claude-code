@@ -1,0 +1,42 @@
+[
+  [
+    "Which urgent faults have no owner?",
+    "unowned"
+  ],
+  [
+    "Which promised fixes are already late?",
+    "overdue"
+  ],
+  [
+    "Which failures returned after their recorded fix?",
+    "regressions"
+  ],
+  [
+    "Which release has captured errors on issues still active?",
+    "release-review"
+  ],
+  [
+    "Which release labels arrived without a deployment record?",
+    "release-gaps"
+  ],
+  [
+    "Which owner has the most overdue fix commitments?",
+    "workload"
+  ],
+  [
+    "Which old faults are still active despite a quiet week?",
+    "quiet-issues"
+  ],
+  [
+    "Which recurring warnings consume the most captured events?",
+    "noise-review"
+  ],
+  [
+    "What exact evidence supported the last fix?",
+    "fix-evidence"
+  ],
+  [
+    "Which projects need an access or retention review?",
+    "compliance"
+  ]
+]

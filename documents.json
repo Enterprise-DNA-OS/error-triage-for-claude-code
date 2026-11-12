@@ -1,11 +1,40 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
-    "file": "name",
+    "name": "fix-brief",
+    "title": "Fix investigation brief",
+    "for_each": "select id,title from issues order by title",
+    "file": "title",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Accountability",
+        "layout": "record",
+        "sql": "select project,title,environment,level,status,owner,due,occurrences,regressions from issue_summary where id=$1"
+      },
+      {
+        "title": "Evidence and investigation notes",
+        "sql": "select actor,body,created_at from notes where issue_id=$1 order by created_at"
+      },
+      {
+        "title": "Captured events",
+        "sql": "select event_key,occurred_at,release,level from occurrences where issue_id=$1 order by occurred_at desc"
+      }
+    ]
+  },
+  {
+    "name": "release-review",
+    "title": "Release error review",
+    "for_each": "select id,version from releases order by deployed_at",
+    "file": "version",
+    "sections": [
+      {
+        "title": "Release",
+        "layout": "record",
+        "sql": "select * from release_health where id=$1"
+      },
+      {
+        "title": "Issues observed on this release",
+        "sql": "select distinct s.title,s.status,s.owner,s.regressions from releases r join issues i on i.project_id=r.project_id and i.environment=r.environment join issue_summary s on s.id=i.id join occurrences o on o.issue_id=i.id and o.release=r.version where r.id=$1"
+      }
     ]
   }
 ]

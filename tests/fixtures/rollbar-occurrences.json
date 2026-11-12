@@ -1,0 +1,116 @@
+[
+  {
+    "err": 0,
+    "result": {
+      "id": "901",
+      "data": {
+        "environment": "production",
+        "timestamp": 1735689600,
+        "level": "error",
+        "code_version": "1.0",
+        "body": {
+          "trace": {
+            "exception": {
+              "class": "TimeoutError",
+              "message": "Supplier response late"
+            },
+            "frames": [
+              {
+                "filename": "services/order.js",
+                "method": "confirm",
+                "lineno": 42
+              }
+            ]
+          }
+        },
+        "request": {
+          "headers": {
+            "Authorization": "Bearer TEST-ONLY"
+          }
+        },
+        "person": {
+          "email": "fiction@example.invalid"
+        },
+        "custom": {
+          "password": "TEST-ONLY"
+        }
+      }
+    }
+  },
+  {
+    "err": 0,
+    "result": {
+      "id": "902",
+      "data": {
+        "environment": "production",
+        "timestamp": 1735689601,
+        "level": "error",
+        "code_version": "1.0",
+        "body": {
+          "trace": {
+            "exception": {
+              "class": "TimeoutError",
+              "message": "Supplier response late"
+            },
+            "frames": [
+              {
+                "filename": "services/order.js",
+                "method": "confirm",
+                "lineno": 42
+              }
+            ]
+          }
+        },
+        "request": {
+          "headers": {
+            "Authorization": "Bearer TEST-ONLY"
+          }
+        },
+        "person": {
+          "email": "fiction@example.invalid"
+        },
+        "custom": {
+          "password": "TEST-ONLY"
+        }
+      }
+    }
+  },
+  {
+    "err": 0,
+    "result": {
+      "id": "903",
+      "data": {
+        "environment": "production",
+        "timestamp": 1735689602,
+        "level": "error",
+        "code_version": "1.0",
+        "body": {
+          "trace": {
+            "exception": {
+              "class": "TimeoutError",
+              "message": "Supplier response late"
+            },
+            "frames": [
+              {
+                "filename": "services/order.js",
+                "method": "confirm",
+                "lineno": 42
+              }
+            ]
+          }
+        },
+        "request": {
+          "headers": {
+            "Authorization": "Bearer TEST-ONLY"
+          }
+        },
+        "person": {
+          "email": "fiction@example.invalid"
+        },
+        "custom": {
+          "password": "TEST-ONLY"
+        }
+      }
+    }
+  }
+]

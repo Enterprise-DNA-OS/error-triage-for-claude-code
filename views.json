@@ -1,13 +1,20 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Error Triage for Claude Code: what needs attention, rendered by npm run view",
+    "title": "Error triage this week",
+    "subtitle": "Captured occurrences, not proof of application health",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Fix queue",
+        "sql": "select project,title,level,owner,last_24h,overdue,regressions from triage_queue"
+      },
+      {
+        "title": "Release evidence",
+        "sql": "select project,environment,version,captured_occurrences,affected_issues from release_health"
+      },
+      {
+        "title": "Record checks",
+        "sql": "select * from record_checks order by rule,reference"
       }
     ]
   }

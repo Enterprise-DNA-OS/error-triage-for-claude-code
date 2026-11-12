@@ -1,115 +1,94 @@
-<h1 align="center">Error Triage for Claude Code</h1>
+# Error Triage for Claude Code
 
-<p align="center">
-  <strong>The open-source error triage desk that is just a database and Claude Code.</strong>
-</p>
+Own the daily error triage desk: captured exceptions, release evidence, fix ownership and recurrence checks in one database. MIT-licensed software by Enterprise DNA. Works with Claude Code, Codex, OpenCode or Cursor.
 
-<p align="center">
-  Created by <a href="https://www.enterprisedna.co"><strong>Enterprise DNA</strong></a>. Free and open source. Works with Claude Code, Codex, OpenCode or Cursor.
-</p>
+| Do it yourself | We customise it | We run it for you |
+|---|---|---|
+| Free source. Install, import and run the daily triage. | Your grouping rules, error sources and release papers. [Get your version built](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_campaign=rollbar). | Installed, connected and operated through Omni by Enterprise DNA. One setup fee, then a retainer. [Book a call](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_campaign=rollbar). |
 
-<!-- three-doors -->
-<table align="center">
-  <tr>
-    <td align="center"><strong>Do it yourself</strong><br/>Clone it, run it, own it. Free, MIT.<br/><a href="#quick-start">Quick start</a></td>
-    <td align="center"><strong>We customise it</strong><br/>Your fields, your rules, your Rollbar data brought across.<br/><a href="https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=rollbar">Book a call</a></td>
-    <td align="center"><strong>We run it for you</strong><br/>Installed, connected and operated inside Omni. Setup fee, then a retainer.<br/><a href="https://enterprisedna.co/omni/instead-of/rollbar?utm_source=github&utm_medium=readme&utm_campaign=rollbar">How it works</a></td>
-  </tr>
-</table>
+## What it replaces
 
-<p align="center">
-  <a href="#what-is-this">What is this</a> &bull;
-  <a href="#why-no-front-end">Why no front end</a> &bull;
-  <a href="#quick-start">Quick start</a> &bull;
-  <a href="#the-commands">Commands</a> &bull;
-  <a href="#instead-of-rollbar">Instead of Rollbar</a> &bull;
-  <a href="#want-it-installed-and-run-for-you">Installed for you</a> &bull;
-  <a href="#license">License</a>
-</p>
+The error review and follow-up workflow around an application: bring in occurrences, group them, assign responsibility, record a fix and see whether it recurs. [Rollbar's published pricing](https://rollbar.com/pricing-for-agents) lists Advanced at US$1,749 a month for five million monthly occurrences, or US$20,988 for twelve monthly payments. Annual billing has a separate discount. Checked 12 November 2026. This is a published tier example, not a customer invoice or a throughput claim for this repo. Rollbar also has much smaller plans and includes unlimited users.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Node-20+-339933?style=flat-square" alt="Node 20+" />
-  <img src="https://img.shields.io/badge/PostgreSQL-any-336791?style=flat-square" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/PGlite-embedded-3ecf8e?style=flat-square" alt="PGlite" />
-  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" alt="MIT License" />
-</p>
-
----
-
-## What is this
-
-Error Triage for Claude Code does the job you pay Rollbar for, as a Postgres database and a set of agent commands. There is no web front end. You open the folder in [Claude Code](https://claude.com/claude-code) (or Codex, OpenCode, Cursor: see `AGENTS.md`) and ask for what you want in plain language. It runs the right query, and it can answer questions the Rollbar dashboard cannot.
-
-<!-- TODO(author): the annual bill. One sentence: what a 10 to 50 person business typically pays Rollbar per year, all in, with a source. -->
-
-Want the same thing with a web front end, or built on a different stack? That is a customisation, and it is exactly what Enterprise DNA does: [book a call](https://enterprisedna.co/omni/book/?utm_source=github&utm_medium=readme&utm_campaign=rollbar).
-
-<!-- TODO(author): two or three sentences on what this specific product covers and who it is for. -->
-
-## Why no front end
-
-- The front end was only ever there because the database was hard to talk to. That is no longer true.
-- Your data sits in plain Postgres tables you own. Any tool can read them. No export, no lock-in.
-- No seats, no tiers, no add-ons. Read [docs/why-no-front-end.md](docs/why-no-front-end.md) for the honest trade-offs too.
+The base is an independent triage system with local file intake. It does not replace Rollbar's hosted collection fleet, session replay, SDK coverage, source maps or service guarantees. Keep an ongoing collector, or have Enterprise DNA build and operate your own collection path. No claim is made that Rollbar cannot answer the same questions or accept custom fields.
 
 ## Quick start
 
-Sixty seconds, no database install (an embedded Postgres runs inside Node):
+Node 22.15 or newer. The local demo needs no account or service.
 
 ```bash
 git clone https://github.com/Enterprise-DNA-OS/error-triage-for-claude-code.git
 cd error-triage-for-claude-code
 npm install
+npm test
 npm run demo
+npm run triage -- morning-triage
+npm run triage -- regressions
+npm run triage -- overdue
+npm run view
+npm run docs
 ```
 
-Then open the folder in Claude Code and type a slash command. <!-- TODO(author): name the first command to try. -->
+The fictional Harbour demo includes a late critical fix, a post-fix recurrence, an unowned warning, an old retained event and a project with no fresh capture. Re-running seed is idempotent. Do not seed production. Shared database seeding requires --demo-database.
 
-### Use it with your own Postgres or Supabase
+Without DATABASE_URL the database is PGlite under .data/db or DATA_DIR. With DATABASE_URL it uses Postgres and the same migration. Run npm run migrate for an empty operational database. Public privileges are revoked and row security is enabled; use a trusted operator and provision shared roles, host protection and recovery before production. Actor names are audit labels, not logins.
 
-Copy `.env.example` to `.env`, set `DATABASE_URL`, then `npm run migrate`. Same commands, shared data, no per-seat fee.
+## Weekly rituals
 
-## The commands
+- /morning-triage: rank active faults and show ownership and volume.
+- /release-review: inspect errors tagged with each release.
+- /regressions: find occurrences after a recorded resolution.
+- /overdue: follow up on named fix commitments.
+- /weekly-review: write the engineering review from those records and compliance checks.
 
-<!-- TODO(author): a table of the slash commands in .claude/commands and what each one does. -->
+35 recipes ship in .claude/commands, including /customise and /new-view. The CLI exposes 33 commands including help. [Complete syntax](docs/cli.md). Every command supports --json. Exact IDs, unique prefixes and case-insensitive names work; ambiguity lists candidates and exits 1.
 
-| Command | What it does |
-|---|---|
-| `/...` | ... |
+## Ten questions to ask
 
-## Instead of Rollbar
+These combine captured events with your own commitments and evidence. They are implemented today, not an assertion that the incumbent lacks a comparable feature.
 
-<!-- TODO(author): how to bring data across from Rollbar; link docs/replace-rollbar.md -->
+1. Which urgent faults have no owner? `unowned`
+2. Which promised fixes are already late? `overdue`
+3. Which failures returned after their recorded fix? `regressions`
+4. Which release has captured errors on issues still active? `release-review`
+5. Which release labels arrived without a deployment record? `release-gaps`
+6. Which owner has the most overdue fix commitments? `workload`
+7. Which old faults are still active despite a quiet week? `quiet-issues`
+8. Which recurring warnings consume the most captured events? `noise-review`
+9. What exact evidence supported the last fix? `fix-evidence`
+10. Which projects need an access or retention review? `compliance`
 
-## Architecture
+## Your first hour: ten things to ask for
 
-```
-error-triage-for-claude-code/
-  CLAUDE.md                 how the operator wants this run (routing table + house rules)
-  AGENTS.md                 the same, for Codex / OpenCode / Cursor / Gemini CLI
-  .claude/commands/         the slash commands
-  scripts/                  the CLI the commands drive
-  scripts/lib/db.mjs        one adapter: DATABASE_URL (pg) or embedded PGlite
-  supabase/migrations/      plain SQL schema
-  supabase/seed.sql         demo data
-  docs/                     the thesis and the migration guide
-```
+1. Put our name, logo and colours in brand.json.
+2. Show the fictional morning triage.
+3. Read the evidence behind the recurring invoice fault.
+4. Generate the fix brief and release review paper.
+5. Add our application project and its accountable owner.
+6. Test a saved Rollbar occurrence export without writing.
+7. Reconcile its source count, retained fields and grouping.
+8. Record our actual release and assign a fix due date.
+9. Capture a controlled local test error and ingest it.
+10. Add our own review field through /customise and prove backup recovery.
 
-## Built for coding agents
+## Data and evidence
 
-The database, CLI and command recipes work with Claude Code, Codex, OpenCode or Cursor. Ask your coding agent for a new command and have it implement and test the change against the same records.
+[Switching guide](docs/replace-rollbar.md). Import full occurrence JSON with one command. Dry runs roll back all writes. Duplicate events skip, conflicting IDs abort, and malformed records stop the entire batch. Source file hashes and row counts remain alongside sanitised event fields. Original files are not copied into the database. Request details, people, telemetry and custom payloads are excluded. Review free text before capture; pattern scrubbing is not complete privacy detection.
 
-## Contributing
+Grouping is local and deterministic. Historical events cannot reopen a fix unless their actual occurrence time is after the resolution. Ignored issues remain ignored until the operator changes them. Missing or delayed events mean coverage is unknown. Reports count captured events, never application-wide failure rates.
 
-Issues and pull requests are welcome. Keep the shape: plain SQL, a small CLI, a slash command per recurring job, no front end.
+## Papers and views
 
-## Want it installed and run for you?
+Change brand.json once. npm run docs creates one investigation brief per issue and one release review per recorded release. npm run view creates the weekly read-only dashboard. /weekly-review and /draft-fix-brief write private HTML drafts. All data is escaped. [Why no front end](docs/why-no-front-end.md).
 
-Enterprise DNA installs Error Triage for Claude Code for your business, migrates your Rollbar data, connects it to the rest of your tools, and runs it for you as part of **Omni**, our managed Command Center. One setup fee, then a monthly retainer.
+## Record checks
 
-- Book a call: [enterprisedna.co/omni/book](https://enterprisedna.co/omni/book/?offer=replace-software&utm_source=github&utm_medium=readme&utm_campaign=rollbar)
-- Read more: [enterprisedna.co/omni/instead-of/rollbar](https://enterprisedna.co/omni/instead-of/rollbar?utm_source=github&utm_medium=readme&utm_campaign=rollbar)
+[Compliance sources](docs/compliance.md) maps access and retention prompts to NZ privacy principles and separates them from house rules. It flags overdue reviews, old records, unowned errors and missing capture. Passing means the listed record checks passed; it does not certify legal compliance or production health. Retention deletion is a separate authorised administration task.
 
-## License
+Occurrence, note, release and audit records are append-only for normal operations. Database administrators can alter those controls. Export contains seven record collections for inspection, not automatic restore. Operational use requires actual backups and tested recovery.
 
-MIT. Copyright (c) 2026 Enterprise DNA.
+## Validation
+
+npm test creates a temporary database, clears inherited production configuration and exercises every CLI command. It checks parsing, identifier ambiguity, rollback, duplicate/conflicting IDs, historical imports, post-fix recurrence, environment separation, privacy filtering, immutable evidence, document output and HTML escaping. CI runs Node 22 and 24 on Linux and Windows and PostgreSQL 16. TRIAGE_TEST_POSTGRES_URL must name an empty disposable test database. High-volume collection has not been benchmarked.
+
+Independent software, not affiliated with Rollbar. MIT. Copyright 2026 Enterprise DNA.
