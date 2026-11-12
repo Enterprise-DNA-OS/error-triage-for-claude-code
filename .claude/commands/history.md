@@ -1,3 +1,7 @@
+---
+description: "History for the error triage desk"
+---
+
 # history
 
 Read or maintain history records using the one CLI.

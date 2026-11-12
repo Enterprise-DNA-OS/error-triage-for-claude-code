@@ -1,3 +1,7 @@
+---
+description: "Reopen for the error triage desk"
+---
+
 # reopen
 
 Return a resolved or ignored issue to the active queue with a reason.

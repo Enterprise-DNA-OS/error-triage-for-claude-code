@@ -1,3 +1,7 @@
+---
+description: "Noise review for the error triage desk"
+---
+
 # noise-review
 
 Read or maintain noise review records using the one CLI.

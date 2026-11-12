@@ -1,3 +1,7 @@
+---
+description: "Ignore for the error triage desk"
+---
+
 # ignore
 
 Set aside an issue with a named reason. Captured events continue to accumulate.

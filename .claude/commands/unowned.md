@@ -1,3 +1,7 @@
+---
+description: "Unowned for the error triage desk"
+---
+
 # unowned
 
 Assign responsibility for active errors with no owner.

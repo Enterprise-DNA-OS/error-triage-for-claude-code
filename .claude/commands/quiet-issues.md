@@ -1,3 +1,7 @@
+---
+description: "Quiet issues for the error triage desk"
+---
+
 # quiet-issues
 
 Read or maintain quiet issues records using the one CLI.

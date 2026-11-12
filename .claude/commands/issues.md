@@ -1,3 +1,7 @@
+---
+description: "Issues for the error triage desk"
+---
+
 # issues
 
 Read or maintain issues records using the one CLI.

@@ -1,3 +1,7 @@
+---
+description: "Ingest for the error triage desk"
+---
+
 # ingest
 
 Load locally captured occurrence JSON into the same triage workflow.

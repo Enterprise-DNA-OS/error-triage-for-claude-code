@@ -1,3 +1,7 @@
+---
+description: "Add project for the error triage desk"
+---
+
 # add-project
 
 Read or maintain add project records using the one CLI.

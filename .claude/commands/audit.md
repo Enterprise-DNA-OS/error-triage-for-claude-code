@@ -1,3 +1,7 @@
+---
+description: "Audit for the error triage desk"
+---
+
 # audit
 
 Read or maintain audit records using the one CLI.

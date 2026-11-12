@@ -1,3 +1,7 @@
+---
+description: "Morning triage for the error triage desk"
+---
+
 # morning-triage
 
 Start the daily error triage: severity, ownership, captured volume and commitments.

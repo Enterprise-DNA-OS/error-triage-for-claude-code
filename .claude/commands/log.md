@@ -1,3 +1,7 @@
+---
+description: "Log for the error triage desk"
+---
+
 # log
 
 Read or maintain log records using the one CLI.

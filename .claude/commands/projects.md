@@ -1,3 +1,7 @@
+---
+description: "Projects for the error triage desk"
+---
+
 # projects
 
 Read or maintain projects records using the one CLI.

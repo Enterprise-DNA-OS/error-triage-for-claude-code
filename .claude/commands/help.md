@@ -1,3 +1,7 @@
+---
+description: "Help for the error triage desk"
+---
+
 # help
 
 Read or maintain help records using the one CLI.

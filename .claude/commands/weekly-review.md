@@ -1,3 +1,7 @@
+---
+description: "Weekly review for the error triage desk"
+---
+
 # weekly-review
 
 Prepare the weekly engineering review from the triage queue, recurrences, overdue work, release results and record checks.

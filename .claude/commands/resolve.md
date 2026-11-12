@@ -1,3 +1,7 @@
+---
+description: "Resolve for the error triage desk"
+---
+
 # resolve
 
 Record verification evidence against a known release. Only active issues can be resolved.
